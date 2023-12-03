@@ -1,13 +1,22 @@
 using UnityEngine;
 using UnityEngine.UI;
+using DG.Tweening;
 
 public class BackgroundScroller : MonoBehaviour
 {
     [SerializeField] private RawImage _img;
-    [SerializeField] private float _x, _y;
+    [SerializeField] private Vector2 _speed;
 
-    void Update()
+    private void Start()
     {
-        _img.uvRect = new Rect(_img.uvRect.position + new Vector2(_x, _y) * Time.deltaTime, _img.uvRect.size);
+        DOTween.To(() => 0f, t => UpdateUVRect(t), float.MaxValue, float.MaxValue)
+               .SetEase(Ease.Linear)
+               .SetLoops(-1, LoopType.Incremental);
+    }
+
+    private void UpdateUVRect(float t)
+    {
+        Vector2 newOffset = new Vector2(t * _speed.x, t * _speed.y);
+        _img.uvRect = new Rect(newOffset, _img.uvRect.size);
     }
 }
