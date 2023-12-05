@@ -548,7 +548,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &228616350
 RectTransform:
   m_ObjectHideFlags: 0
@@ -675,13 +675,29 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3081150254803904743, guid: 5aae179e7cb0f524bbfda36d72d7e5a9, type: 3}
+      propertyPath: ColorModule.enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3081150254803904743, guid: 5aae179e7cb0f524bbfda36d72d7e5a9, type: 3}
+      propertyPath: ColorModule.gradient.maxGradient.atime1
+      value: 26214
+      objectReference: {fileID: 0}
+    - target: {fileID: 3081150254803904743, guid: 5aae179e7cb0f524bbfda36d72d7e5a9, type: 3}
+      propertyPath: ColorModule.gradient.maxGradient.key1.a
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3081150254803904743, guid: 5aae179e7cb0f524bbfda36d72d7e5a9, type: 3}
+      propertyPath: ColorModule.gradient.maxGradient.m_ColorSpace
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3859169553813604795, guid: 5aae179e7cb0f524bbfda36d72d7e5a9, type: 3}
       propertyPath: m_Name
       value: Particle System (7)
       objectReference: {fileID: 0}
     - target: {fileID: 3859169553813604795, guid: 5aae179e7cb0f524bbfda36d72d7e5a9, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -863,13 +879,29 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3081150254803904743, guid: 5aae179e7cb0f524bbfda36d72d7e5a9, type: 3}
+      propertyPath: ColorModule.enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3081150254803904743, guid: 5aae179e7cb0f524bbfda36d72d7e5a9, type: 3}
+      propertyPath: ColorModule.gradient.maxGradient.atime1
+      value: 26214
+      objectReference: {fileID: 0}
+    - target: {fileID: 3081150254803904743, guid: 5aae179e7cb0f524bbfda36d72d7e5a9, type: 3}
+      propertyPath: ColorModule.gradient.maxGradient.key1.a
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3081150254803904743, guid: 5aae179e7cb0f524bbfda36d72d7e5a9, type: 3}
+      propertyPath: ColorModule.gradient.maxGradient.m_ColorSpace
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3859169553813604795, guid: 5aae179e7cb0f524bbfda36d72d7e5a9, type: 3}
       propertyPath: m_Name
       value: Particle System (6)
       objectReference: {fileID: 0}
     - target: {fileID: 3859169553813604795, guid: 5aae179e7cb0f524bbfda36d72d7e5a9, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -6843,13 +6875,29 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3081150254803904743, guid: 5aae179e7cb0f524bbfda36d72d7e5a9, type: 3}
+      propertyPath: ColorModule.enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3081150254803904743, guid: 5aae179e7cb0f524bbfda36d72d7e5a9, type: 3}
+      propertyPath: ColorModule.gradient.maxGradient.atime1
+      value: 26214
+      objectReference: {fileID: 0}
+    - target: {fileID: 3081150254803904743, guid: 5aae179e7cb0f524bbfda36d72d7e5a9, type: 3}
+      propertyPath: ColorModule.gradient.maxGradient.key1.a
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3081150254803904743, guid: 5aae179e7cb0f524bbfda36d72d7e5a9, type: 3}
+      propertyPath: ColorModule.gradient.maxGradient.m_ColorSpace
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3859169553813604795, guid: 5aae179e7cb0f524bbfda36d72d7e5a9, type: 3}
       propertyPath: m_Name
       value: Particle System (5)
       objectReference: {fileID: 0}
     - target: {fileID: 3859169553813604795, guid: 5aae179e7cb0f524bbfda36d72d7e5a9, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -6954,7 +7002,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6886758963319998923, guid: 7865c16af6763934698baadd6376318a, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -8043,7 +8091,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3859169553813604795, guid: 5aae179e7cb0f524bbfda36d72d7e5a9, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
