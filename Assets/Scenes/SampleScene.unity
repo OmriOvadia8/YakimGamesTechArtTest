@@ -6927,6 +6927,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6554923572332404173, guid: 7865c16af6763934698baadd6376318a, type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 2100000, guid: ed68779aa9fa1b84fa68a8fdc13dd3a3, type: 2}
     - target: {fileID: 6886758963319998923, guid: 7865c16af6763934698baadd6376318a, type: 3}
       propertyPath: m_Name
       value: Avatar Holder (2)
@@ -8311,7 +8315,7 @@ PrefabInstance:
     - target: {fileID: 6554923572332404173, guid: 7865c16af6763934698baadd6376318a, type: 3}
       propertyPath: m_Material
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 2100000, guid: c340024b972bc5d4b87c72f71520a1f2, type: 2}
     - target: {fileID: 6886758963319998923, guid: 7865c16af6763934698baadd6376318a, type: 3}
       propertyPath: m_Name
       value: Avatar Holder
