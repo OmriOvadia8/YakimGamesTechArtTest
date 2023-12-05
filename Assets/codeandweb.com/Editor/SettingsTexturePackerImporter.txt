@@ -1,0 +1,11 @@
+version: 2
+tpsheetFileNames:
+- Assets/_TechArtTest/Images/VSWindowTextures/VStextures.tpsheet
+- Assets/codeandweb.com/Example/SpriteSheet/sprites.tpsheet
+textureFileNames:
+- Assets/_TechArtTest/Images/VSWindowTextures/VStextures.png
+- Assets/codeandweb.com/Example/SpriteSheet/sprites.png
+normalmapFileNames:
+- 
+- Assets/codeandweb.com/Example/SpriteSheet/sprites_n.png
+enableDebugOutput: 0

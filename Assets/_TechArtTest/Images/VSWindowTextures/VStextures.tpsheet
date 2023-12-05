@@ -1,0 +1,20 @@
+#
+# Sprite sheet data for Unity.
+#
+# To import these sprites into your Unity project, download "TexturePackerImporter":
+# https://www.codeandweb.com/texturepacker/unity
+#
+# $TexturePacker:SmartUpdate:0fb6a22e9939f69f63ab16c50fad5737:0ad60234fe024cdf084a10d98b0924a1:f3e5a6154b8821f73f552a627ea4549a$
+#
+:format=40300
+:texture=VStextures.png
+:size=1024x2048
+:pivotpoints=enabled
+:borders=disabled
+:alphahandling=ClearTransparentPixels
+
+Avatar;271;1033;302;1013; 0.5;0.5; 0;0;0;0
+lightning_fill_3;2;876;250;1170; 0.5;0.5; 0;0;0;0
+MAGNIFICING GLASS ICON;592;1546;188;213; 0.5;0.5; 0;0;0;0
+OPPONENT TEXT;2;2;728;115; 0.5;0.5; 0;0;0;0
+VS_Text;592;1778;375;268; 0.5;0.5; 0;0;0;0
