@@ -20,9 +20,16 @@ public class VSTextAnimation : MonoBehaviour
         rectTransform = image.rectTransform;
         rectTransform.localScale = Vector3.one * 1.3f;
 
-        // Create a DOTween sequence
+        // Create a DOTween sequence with initial delay
         Sequence mySequence = DOTween.Sequence();
 
+        // Start with a delay
+        mySequence.AppendInterval(0.55f);
+
+        // Activate the GameObject after the delay
+        mySequence.AppendCallback(() => image.gameObject.SetActive(true));
+
+        // Rest of the animation sequence
         // Animate the image color alpha to 1 over 0.25 seconds
         mySequence.Append(image.DOFade(1f, 0.25f));
 
