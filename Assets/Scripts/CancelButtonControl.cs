@@ -2,8 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
+using UnityEngine.UI;
 
-public class OpponentWindowAnimations : MonoBehaviour
+public class CancelButtonControl : MonoBehaviour
 {
     public float scaleFactor = 0.8f;      // Factor to scale down
     public float overshoot = 1.2f;        // Factor to scale up beyond original size

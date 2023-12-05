@@ -1,18 +1,19 @@
-using System.Collections;
-using System.Collections.Generic;
+using DG.Tweening;
 using UnityEngine;
 
 public class TipsController : MonoBehaviour
 {
-    // Start is called before the first frame update
+    private RectTransform rectTransform;
+    public float duration = 0.5f; // Total duration of the animation
+
     void Start()
     {
-        
-    }
+        rectTransform = GetComponent<RectTransform>();
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+        // Calculate target position
+        float targetPosX = rectTransform.anchoredPosition.x - 220;
+
+        // Move the GameObject
+        rectTransform.DOAnchorPosX(targetPosX, duration).SetEase(Ease.InQuad); // Or Ease.InSine
     }
 }
