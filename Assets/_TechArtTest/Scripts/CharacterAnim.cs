@@ -23,6 +23,11 @@ public class CharacterAnim : MonoBehaviour
 
         originalPosition = imageRectTransform.anchoredPosition;
 
+
+    }
+
+    public void TransitionToVSScreen()
+    {
         // Create a sequence
         Sequence sequence = DOTween.Sequence();
 
