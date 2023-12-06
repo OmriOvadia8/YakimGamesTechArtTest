@@ -15,7 +15,6 @@ public class AnimationsControl : MonoBehaviour
 
     private void Start()
     {
-        playButton.SetActive(false);
         vsScreen.SetActive(false);
         matchFoundCoroutine = StartCoroutine(DelayedMatchFound());
     }
@@ -23,6 +22,7 @@ public class AnimationsControl : MonoBehaviour
     public void StartFindingMatch()
     {
         waitingText.SetActive(true);
+        detailsFading.ActivatePlayButton(false, 0f);
         detailsFading.AppearAndRise();
         matchFoundCoroutine = StartCoroutine(DelayedMatchFound());
     }
@@ -35,6 +35,7 @@ public class AnimationsControl : MonoBehaviour
             StopCoroutine(matchFoundCoroutine);
         }
         detailsFading.FadeAndDisappear();
+        detailsFading.ActivatePlayButton(true, 0.5f);
     }
 
     private IEnumerator DelayedMatchFound()

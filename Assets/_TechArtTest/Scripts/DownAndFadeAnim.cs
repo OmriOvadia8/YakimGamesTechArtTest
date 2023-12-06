@@ -1,9 +1,11 @@
 using DG.Tweening;
+using System.Collections;
 using UnityEngine;
 
 public class DownAndFadeAnim : MonoBehaviour
 {
     [SerializeField] MagnifyingGlassAnimation magnifyingGlass;
+    [SerializeField] PlayButtonAnim playButtonAnim;
     [SerializeField] private CanvasGroup[] canvasGroups; // Array of CanvasGroup components
     public float duration = 0.5f; // Total duration of the animation
     public float moveDistance = 40f; // Distance to move down
@@ -57,6 +59,26 @@ public class DownAndFadeAnim : MonoBehaviour
             sequence.OnStart(() => canvasGroup.gameObject.SetActive(true));
         }
     }
+
+    public void ActivatePlayButton(bool isActive, float transitionTime)
+    {
+        StartCoroutine(ActivatePlayButtonWithDelay(isActive, transitionTime));
+    }
+
+    private IEnumerator ActivatePlayButtonWithDelay(bool isActive, float delay)
+    {
+        yield return new WaitForSeconds(delay);
+
+        if (isActive)
+        {
+            playButtonAnim.GrowAndAppear();
+        }
+        else
+        {
+            playButtonAnim.ShrinkAndDisappear();
+        }
+    }
+
 
     private void MoveToCenter() // animation to make the tips go to center as the video shows (not implemented according to the Word file, just showing animation logic)
     {
