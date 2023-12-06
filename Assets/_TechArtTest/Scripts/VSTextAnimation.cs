@@ -34,13 +34,13 @@ public class VSTextAnimation : MonoBehaviour
         mySequence.Append(image.DOFade(1f, 0.25f));
 
         // Simultaneously scale down to 0.4 over 0.5 seconds
-        mySequence.Join(rectTransform.DOScale(0.4f, 0.5f).SetEase(Ease.OutQuad));
+        mySequence.Join(rectTransform.DOScale(0.4f, 0.25f).SetEase(Ease.OutQuad));
 
         // Start changing the glow color when the scale reaches 0.4
         mySequence.AppendCallback(() => material.SetColor("_Glow", ColorFromHSV(0, 0, 60, 0)));
 
         // Scale up to 0.6 while gradually changing the glow color
-        mySequence.Append(rectTransform.DOScale(0.6f, 0.5f));
+        mySequence.Append(rectTransform.DOScale(0.6f, 0.25f));
         mySequence.Join(DOTween.To(() => material.GetColor("_Glow"),
                                     x => material.SetColor("_Glow", x),
                                     ColorFromHSV(0, 0, 0, 0), // Target color HSV (0,0,0) with alpha 0
