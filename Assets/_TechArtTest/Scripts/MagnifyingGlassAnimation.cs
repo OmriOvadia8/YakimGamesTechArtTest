@@ -64,17 +64,13 @@ public class MagnifyingGlassAnimation : MonoBehaviour
         rectTransform.localScale = Vector3.zero;
         image.color = new Color(image.color.r, image.color.g, image.color.b, 0);
 
-        // Create a sequence for the growing and appearing animation
         Sequence sequence = DOTween.Sequence();
 
-        // Animate to grow to a little bit larger than normal and fade in simultaneously
+
         sequence.Append(rectTransform.DOScale(originalScale * 1.2f, 0.3f).SetEase(Ease.OutBack))
-                .Join(image.DOFade(1f, 0.3f)); // Start fading in at the same time
+                .Join(image.DOFade(1f, 0.3f)); 
 
-        // Then scale back to normal size
         sequence.Append(rectTransform.DOScale(originalScale, 0.2f).SetEase(Ease.InBack));
-
-        // Optional: Restart the rotation animation
         sequence.OnComplete(StartRotating);
     }
 

@@ -6775,6 +6775,11 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 3270401624729136647, guid: 1cca5e2393b36034d81955271b5eb41a, type: 3}
   m_PrefabInstance: {fileID: 804957270}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &862089525 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2817024001641623100, guid: 388b6987e3858ab46a548f43999b7005, type: 3}
+  m_PrefabInstance: {fileID: 4803746189548264852}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &870109703
 GameObject:
   m_ObjectHideFlags: 0
@@ -6932,6 +6937,34 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1047959572 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2051749362380678128, guid: 388b6987e3858ab46a548f43999b7005, type: 3}
+  m_PrefabInstance: {fileID: 4803746189548264852}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1047959574 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2897557548821839473, guid: 388b6987e3858ab46a548f43999b7005, type: 3}
+  m_PrefabInstance: {fileID: 4803746189548264852}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1047959572}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!225 &1047959576
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1047959572}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &1096869517
 GameObject:
   m_ObjectHideFlags: 0
@@ -7881,6 +7914,32 @@ CanvasGroup:
   m_CorrespondingSourceObject: {fileID: 3578411606327709112, guid: 388b6987e3858ab46a548f43999b7005, type: 3}
   m_PrefabInstance: {fileID: 4803746189548264852}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1697534651
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 862089525}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9e7a0cd64cd21cf4291fdce001c23efa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tipText: {fileID: 1047959574}
+  tipsSwitchingTimeInSeconds: 2
+  tips:
+  - SerialNumber: 100
+    Text: Watch your opponents, their behavior can reveal their hand.
+  - SerialNumber: 111
+    Text: Play tight but aggressive. Make your bets count.
+  - SerialNumber: 222
+    Text: Be patient. Good hands will come.
+  - SerialNumber: 333
+    Text: Don't chase losses. Fold when you're unsure.
+  - SerialNumber: 444
+    Text: Position is key. Act last to have the most information.
+  tipTextCanvasGroup: {fileID: 1047959576}
 --- !u!1 &1733083958 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7067243270715640471, guid: 7865c16af6763934698baadd6376318a, type: 3}
@@ -8592,7 +8651,13 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 2817024001641623100, guid: 388b6987e3858ab46a548f43999b7005, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1697534651}
+    - targetCorrespondingSourceObject: {fileID: 2051749362380678128, guid: 388b6987e3858ab46a548f43999b7005, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1047959576}
   m_SourcePrefab: {fileID: 100100000, guid: 388b6987e3858ab46a548f43999b7005, type: 3}
 --- !u!1001 &5742818516897717613
 PrefabInstance:
