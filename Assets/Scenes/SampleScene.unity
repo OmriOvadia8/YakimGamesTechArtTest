@@ -594,8 +594,8 @@ MonoBehaviour:
   fillImage: {fileID: 1694083337}
   moveDistance: 700
   overshootDistance: 50
-  durationFast: 0.3
-  durationSlow: 0.6
+  easeInDuration: 0.5
+  easeOutDuration: 0.75
 --- !u!1001 &232050720
 PrefabInstance:
   m_ObjectHideFlags: 0
