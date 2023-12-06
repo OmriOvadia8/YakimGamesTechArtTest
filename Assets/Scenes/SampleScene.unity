@@ -6890,10 +6890,10 @@ MonoBehaviour:
   image: {fileID: 931496987}
   rotationDuration: 4
   rotationRadius: 20
-  scaleUpDuration: 0.2
-  scaleDownDuration: 0.3
+  scaleUpDuration: 0.1
+  scaleDownDuration: 0.2
   growScaleFactor: 1.2
-  fadeDuration: 0.3
+  fadeDuration: 0.5
   originalScaleResetDuration: 0.2
 --- !u!114 &931496987
 MonoBehaviour:
@@ -7766,8 +7766,8 @@ MonoBehaviour:
   image: {fileID: 1040470170}
   glowShaderProperty: _Glow
   moveOffset: {x: 400, y: 0}
-  moveDuration: 1
-  colorTransitionDuration: 0.75
+  moveDuration: 0.75
+  colorTransitionDuration: 0.6
   glowColorHSVCode: {x: 60, y: 40, z: 100, w: 0}
   normalColorHSVCode: {x: 60, y: 0, z: 0, w: 0}
 --- !u!1 &1608913263
