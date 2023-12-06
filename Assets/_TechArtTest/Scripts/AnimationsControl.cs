@@ -1,22 +1,28 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class AnimationsControl : MonoBehaviour
 {
-    [SerializeField] GameObject waitingScreen;
-    [SerializeField] GameObject vsScreen;
-    [SerializeField] GameObject waitingText;
-    [SerializeField] GameObject playButton;
-    [SerializeField] DownAndFadeAnim detailsFading;
-    [SerializeField] float waitingDuration;
-    [SerializeField] CharacterAnim characterAnim;
+    [Header("UI Elements")]
+    [SerializeField] private GameObject waitingScreen;
+    [SerializeField] private GameObject vsScreen;
+    [SerializeField] private GameObject waitingText;
+    [SerializeField] private GameObject playButton;
+
+    [Header("Animation Managers")]
+    [SerializeField] private FadeTransitionManager detailsFading;
+    [SerializeField] private CharacterAnim characterAnim;
+
+    [Header("Match Settings")]
+    [SerializeField] private float waitingDuration;
+    [SerializeField] private float transitionDelay;
+
     private Coroutine matchFoundCoroutine;
 
     private void Start()
     {
         vsScreen.SetActive(false);
-        matchFoundCoroutine = StartCoroutine(DelayedMatchFound());
+        StartMatchFindingSequence();
     }
 
     public void StartFindingMatch()
@@ -24,9 +30,8 @@ public class AnimationsControl : MonoBehaviour
         waitingText.SetActive(true);
         detailsFading.ActivatePlayButton(false, 0f);
         detailsFading.AppearAndRise();
-        matchFoundCoroutine = StartCoroutine(DelayedMatchFound());
+        StartMatchFindingSequence();
     }
-
 
     public void StopFindingMatch()
     {
@@ -38,17 +43,15 @@ public class AnimationsControl : MonoBehaviour
         detailsFading.ActivatePlayButton(true, 0.5f);
     }
 
+    private void StartMatchFindingSequence() => matchFoundCoroutine = StartCoroutine(DelayedMatchFound());
+
     private IEnumerator DelayedMatchFound()
     {
         yield return new WaitForSeconds(waitingDuration);
         detailsFading.FadeAndDisappear();
-        yield return new WaitForSeconds(waitingDuration - (waitingDuration - 0.6f));
+        yield return new WaitForSeconds(transitionDelay);
         MatchFound();
     }
 
-    private void MatchFound()
-    {
-        characterAnim.TransitionToVSScreen();
-    }
-
+    private void MatchFound() => characterAnim.TransitionToVSScreen();
 }

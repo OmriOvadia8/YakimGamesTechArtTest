@@ -4,41 +4,46 @@ using UnityEngine.UI;
 
 public class VSTextAnimation : MonoBehaviour
 {
-    public Image image;
-    private Material material; 
-    private RectTransform rectTransform; 
+    [SerializeField] private Image image;
+    [SerializeField] private string glowShaderProperty = "_Glow";
 
-    void Start()
+    [Header("Glow Color")]
+    [SerializeField] private Vector4 initialGlowColor = new(0, 0, 1, 0);
+    [SerializeField] private Vector4 finalGlowColor = new(0, 0, 60, 0);
+    [SerializeField] private Color startingColor;
+
+    [Header("Timers Settings")]
+    [SerializeField] private float initialDelay = 0.55f;
+    [SerializeField] private float fadeInDuration = 0.25f;
+    [SerializeField] private float scaleInDuration = 0.25f;
+    [SerializeField] private float scaleOutDuration = 0.25f;
+    [SerializeField] private float glowFadeOutDuration = 0.5f;
+
+    [Header("Scaling Settings")]
+    [SerializeField] private float startingScale = 1.3f;
+    [SerializeField] private float midScale = 0.4f;
+    [SerializeField] private float finalScale = 0.6f;
+
+    private Material material;
+    private RectTransform rectTransform;
+
+    private void Start()
     {
         material = image.material;
-        material.SetColor("_Glow", ColorFromHSV(0, 0, 1, 0)); 
-        image.color = new Color(1, 1, 1, 0.5f); 
+        material.SetColor(glowShaderProperty, Extensions.ColorFromHSV(initialGlowColor));
+
+        image.color = startingColor;
+
         rectTransform = image.rectTransform;
-        rectTransform.localScale = Vector3.one * 1.3f;
+        rectTransform.localScale = Vector3.one * startingScale;
 
-        Sequence mySequence = DOTween.Sequence();
-
-        mySequence.AppendInterval(0.55f);
-
-        mySequence.AppendCallback(() => image.gameObject.SetActive(true));
-
-        mySequence.Append(image.DOFade(1f, 0.25f));
-
-        mySequence.Join(rectTransform.DOScale(0.4f, 0.25f).SetEase(Ease.OutQuad));
-
-        mySequence.AppendCallback(() => material.SetColor("_Glow", ColorFromHSV(0, 0, 60, 0)));
-
-        mySequence.Append(rectTransform.DOScale(0.6f, 0.25f));
-        mySequence.Join(DOTween.To(() => material.GetColor("_Glow"),
-                                    x => material.SetColor("_Glow", x),
-                                    ColorFromHSV(0, 0, 0, 0),
-                                    0.5f));
-    }
-
-    Color ColorFromHSV(float h, float s, float v, float a)
-    {
-        Color color = Color.HSVToRGB(h / 360f, s / 100f, v / 100f);
-        color.a = a;
-        return color;
+        Sequence mySequence = DOTween.Sequence()
+            .AppendInterval(initialDelay)
+            .AppendCallback(() => image.gameObject.SetActive(true))
+            .Append(image.DOFade(1f, fadeInDuration))
+            .Join(rectTransform.DOScale(midScale, scaleInDuration).SetEase(Ease.OutQuad))
+            .AppendCallback(() => material.SetColor(glowShaderProperty, Extensions.ColorFromHSV(finalGlowColor)))
+            .Append(rectTransform.DOScale(finalScale, scaleOutDuration))
+            .Join(DOTween.To(() => material.GetColor(glowShaderProperty), x => material.SetColor(glowShaderProperty, x), Extensions.ColorFromHSV(Vector4.zero), glowFadeOutDuration));
     }
 }

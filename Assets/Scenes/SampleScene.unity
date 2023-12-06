@@ -461,8 +461,9 @@ MonoBehaviour:
   waitingText: {fileID: 677520672}
   playButton: {fileID: 319439467}
   detailsFading: {fileID: 347784781}
-  waitingDuration: 7
   characterAnim: {fileID: 1733083962}
+  waitingDuration: 7
+  transitionDelay: 0
 --- !u!1 &218962294
 GameObject:
   m_ObjectHideFlags: 0
@@ -589,11 +590,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e14aa2efa345ef49835d30a883f57e2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rectTransform: {fileID: 228616350}
+  fillImage: {fileID: 1694083337}
   moveDistance: 700
   overshootDistance: 50
   durationFast: 0.3
   durationSlow: 0.6
-  fillImage: {fileID: 1694083337}
 --- !u!1001 &232050720
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -753,8 +755,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 696da21da482bab47afbae5b73c89984, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _img: {fileID: 256773196}
-  _speed: {x: -0.01, y: -0.01}
+  backgroundImage: {fileID: 256773196}
+  scrollingSpeed: {x: -0.01, y: -0.01}
 --- !u!114 &256773196
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5957,6 +5959,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c7447c0fe9feb734788ad5a4282ccd08, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  growScaleFactor: 1.1
+  growDuration: 0.3
+  shrinkDuration: 0.2
   canvasGroup: {fileID: 319439472}
   rectTransform: {fileID: 319439468}
 --- !u!1 &347784780
@@ -5970,7 +5975,7 @@ GameObject:
   - component: {fileID: 347784782}
   - component: {fileID: 347784781}
   m_Layer: 0
-  m_Name: FadeAndDown
+  m_Name: FadeTransitionManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5994,7 +5999,7 @@ MonoBehaviour:
   - {fileID: 1697534650}
   - {fileID: 36094299}
   - {fileID: 870109705}
-  duration: 0.5
+  fadeDuration: 0.5
   moveDistance: 40
 --- !u!4 &347784782
 Transform:
@@ -6775,11 +6780,6 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 3270401624729136647, guid: 1cca5e2393b36034d81955271b5eb41a, type: 3}
   m_PrefabInstance: {fileID: 804957270}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &862089525 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2817024001641623100, guid: 388b6987e3858ab46a548f43999b7005, type: 3}
-  m_PrefabInstance: {fileID: 4803746189548264852}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &870109703
 GameObject:
   m_ObjectHideFlags: 0
@@ -6886,8 +6886,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: efcdc7b439a2dc945b238edd6e70504a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  duration: 3
-  radius: 20
+  rectTransform: {fileID: 931496985}
+  image: {fileID: 931496987}
+  rotationDuration: 4
+  rotationRadius: 20
+  scaleUpDuration: 0.2
+  scaleDownDuration: 0.3
+  growScaleFactor: 1.2
+  fadeDuration: 0.3
+  originalScaleResetDuration: 0.2
 --- !u!114 &931496987
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6942,17 +6949,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 2051749362380678128, guid: 388b6987e3858ab46a548f43999b7005, type: 3}
   m_PrefabInstance: {fileID: 4803746189548264852}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1047959574 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 2897557548821839473, guid: 388b6987e3858ab46a548f43999b7005, type: 3}
-  m_PrefabInstance: {fileID: 4803746189548264852}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1047959572}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!225 &1047959576
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -7120,6 +7116,13 @@ MonoBehaviour:
   nameCanvasGroup: {fileID: 1501590540}
   enemyLevel: {fileID: 562783069}
   levelCanvasGroup: {fileID: 562783073}
+  startingScale: 0.3
+  midScaleDuration: 0.5
+  finalScaleDuration: 0.3
+  nameMidScale: 0.6
+  nameFinalScale: 0.5
+  levelMidScale: 0.5
+  levelFinalScale: 0.4
 --- !u!1001 &1166819700
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7434,6 +7437,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   image: {fileID: 1608913265}
+  glowShaderProperty: _Glow
+  initialGlowColor: {x: 0, y: 0, z: 1, w: 0}
+  finalGlowColor: {x: 0, y: 0, z: 60, w: 0}
+  startingColor: {r: 1, g: 1, b: 1, a: 0.5019608}
+  initialDelay: 0.55
+  fadeInDuration: 0.25
+  scaleInDuration: 0.25
+  scaleOutDuration: 0.25
+  glowFadeOutDuration: 0.5
+  startingScale: 1.3
+  midScale: 0.4
+  finalScale: 0.6
 --- !u!1 &1565862565
 GameObject:
   m_ObjectHideFlags: 0
@@ -7749,6 +7764,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   image: {fileID: 1040470170}
+  glowShaderProperty: _Glow
+  moveOffset: {x: 400, y: 0}
+  moveDuration: 1
+  colorTransitionDuration: 0.75
+  glowColorHSVCode: {x: 60, y: 40, z: 100, w: 0}
+  normalColorHSVCode: {x: 60, y: 0, z: 0, w: 0}
 --- !u!1 &1608913263
 GameObject:
   m_ObjectHideFlags: 0
@@ -7914,32 +7935,6 @@ CanvasGroup:
   m_CorrespondingSourceObject: {fileID: 3578411606327709112, guid: 388b6987e3858ab46a548f43999b7005, type: 3}
   m_PrefabInstance: {fileID: 4803746189548264852}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1697534651
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 862089525}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9e7a0cd64cd21cf4291fdce001c23efa, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  tipText: {fileID: 1047959574}
-  tipsSwitchingTimeInSeconds: 2
-  tips:
-  - SerialNumber: 100
-    Text: Watch your opponents, their behavior can reveal their hand.
-  - SerialNumber: 111
-    Text: Play tight but aggressive. Make your bets count.
-  - SerialNumber: 222
-    Text: Be patient. Good hands will come.
-  - SerialNumber: 333
-    Text: Don't chase losses. Fold when you're unsure.
-  - SerialNumber: 444
-    Text: Position is key. Act last to have the most information.
-  tipTextCanvasGroup: {fileID: 1047959576}
 --- !u!1 &1733083958 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7067243270715640471, guid: 7865c16af6763934698baadd6376318a, type: 3}
@@ -8066,8 +8061,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 696da21da482bab47afbae5b73c89984, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _img: {fileID: 1860445803}
-  _speed: {x: -0.01, y: -0.01}
+  backgroundImage: {fileID: 1860445803}
+  scrollingSpeed: {x: -0.01, y: -0.01}
 --- !u!114 &1860445803
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8548,6 +8543,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tips Content
       objectReference: {fileID: 0}
+    - target: {fileID: 2897557548821839473, guid: 388b6987e3858ab46a548f43999b7005, type: 3}
+      propertyPath: m_text
+      value: Be patient. Good hands will come.
+      objectReference: {fileID: 0}
     - target: {fileID: 3353975016128169817, guid: 388b6987e3858ab46a548f43999b7005, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0.5
@@ -8567,6 +8566,50 @@ PrefabInstance:
     - target: {fileID: 3353975016128169817, guid: 388b6987e3858ab46a548f43999b7005, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 8.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5694707917564287733, guid: 388b6987e3858ab46a548f43999b7005, type: 3}
+      propertyPath: tips.Array.data[0].tip_text
+      value: Watch your opponents. their behavior can reveal their hand.
+      objectReference: {fileID: 0}
+    - target: {fileID: 5694707917564287733, guid: 388b6987e3858ab46a548f43999b7005, type: 3}
+      propertyPath: tips.Array.data[1].tip_text
+      value: Play tight but aggressive. Make your bets count.
+      objectReference: {fileID: 0}
+    - target: {fileID: 5694707917564287733, guid: 388b6987e3858ab46a548f43999b7005, type: 3}
+      propertyPath: tips.Array.data[2].tip_text
+      value: Be patient. Good hands will come.
+      objectReference: {fileID: 0}
+    - target: {fileID: 5694707917564287733, guid: 388b6987e3858ab46a548f43999b7005, type: 3}
+      propertyPath: tips.Array.data[3].tip_text
+      value: Position is key. Act last to have the most information.
+      objectReference: {fileID: 0}
+    - target: {fileID: 5694707917564287733, guid: 388b6987e3858ab46a548f43999b7005, type: 3}
+      propertyPath: tips.Array.data[4].tip_text
+      value: Don't chase losses. Fold when you're unsure.
+      objectReference: {fileID: 0}
+    - target: {fileID: 5694707917564287733, guid: 388b6987e3858ab46a548f43999b7005, type: 3}
+      propertyPath: tips_switching_time_in_seconds
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5694707917564287733, guid: 388b6987e3858ab46a548f43999b7005, type: 3}
+      propertyPath: tips.Array.data[0].vs_screen_tip_number
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 5694707917564287733, guid: 388b6987e3858ab46a548f43999b7005, type: 3}
+      propertyPath: tips.Array.data[1].vs_screen_tip_number
+      value: 111
+      objectReference: {fileID: 0}
+    - target: {fileID: 5694707917564287733, guid: 388b6987e3858ab46a548f43999b7005, type: 3}
+      propertyPath: tips.Array.data[2].vs_screen_tip_number
+      value: 222
+      objectReference: {fileID: 0}
+    - target: {fileID: 5694707917564287733, guid: 388b6987e3858ab46a548f43999b7005, type: 3}
+      propertyPath: tips.Array.data[3].vs_screen_tip_number
+      value: 333
+      objectReference: {fileID: 0}
+    - target: {fileID: 5694707917564287733, guid: 388b6987e3858ab46a548f43999b7005, type: 3}
+      propertyPath: tips.Array.data[4].vs_screen_tip_number
+      value: 444
       objectReference: {fileID: 0}
     - target: {fileID: 7894488846287547999, guid: 388b6987e3858ab46a548f43999b7005, type: 3}
       propertyPath: m_Pivot.x
@@ -8652,9 +8695,6 @@ PrefabInstance:
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 2817024001641623100, guid: 388b6987e3858ab46a548f43999b7005, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1697534651}
     - targetCorrespondingSourceObject: {fileID: 2051749362380678128, guid: 388b6987e3858ab46a548f43999b7005, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1047959576}

@@ -1,36 +1,42 @@
 using DG.Tweening;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class EnemyDetailsAnim : MonoBehaviour
 {
-    [SerializeField] GameObject enemyName;
-    [SerializeField] CanvasGroup nameCanvasGroup;
-    [SerializeField] GameObject enemyLevel;
-    [SerializeField] CanvasGroup levelCanvasGroup;
+    [Header("Enemy UI Elements")]
+    [SerializeField] private GameObject enemyName;
+    [SerializeField] private CanvasGroup nameCanvasGroup;
+    [SerializeField] private GameObject enemyLevel;
+    [SerializeField] private CanvasGroup levelCanvasGroup;
 
-    void Start()
+    [Header("General Animation Parameters")]
+    [SerializeField] private float startingScale = 0.3f;
+    [SerializeField] private float midScaleDuration = 0.5f;
+    [SerializeField] private float finalScaleDuration = 0.3f;
+
+
+    [Header("Name Animation Parameters")]
+    [SerializeField] private float nameMidScale = 0.6f;
+    [SerializeField] private float nameFinalScale = 0.5f;
+
+
+    [Header("Level Animation Parameters")]
+    [SerializeField] private float levelMidScale = 0.5f;
+    [SerializeField] private float levelFinalScale = 0.4f;
+
+    private void Start()
     {
-        InitGameObjectAnimation(nameCanvasGroup, 0.6f, 0.5f);
-        InitGameObjectAnimation(levelCanvasGroup, 0.5f, 0.4f);
+        InitGameObjectAnimation(nameCanvasGroup, nameMidScale, nameFinalScale);
+        InitGameObjectAnimation(levelCanvasGroup, levelMidScale, levelFinalScale);
     }
 
-    void InitGameObjectAnimation(CanvasGroup canvasGroup, float midScale ,float finalScale)
+    private void InitGameObjectAnimation(CanvasGroup canvasGroup, float midScale, float finalScale)
     {
-        // Set initial alpha and scale
         canvasGroup.alpha = 0.5f;
-        canvasGroup.transform.localScale = Vector3.one * 0.3f;
-
-        // Create a DOTween sequence for the animation
+        canvasGroup.transform.localScale = Vector3.one * startingScale;
         Sequence mySequence = DOTween.Sequence();
-
-        // Animate scale up to 1.1
-        mySequence.Append(canvasGroup.transform.DOScale(midScale, 0.5f).SetEase(Ease.OutBack)); // Duration and ease are adjustable
-
-        // Simultaneously animate alpha to 1
-        mySequence.Join(canvasGroup.DOFade(1f, 0.5f)); // Ensure this duration matches the scale up
-
-        // Then animate scale back down to 1
-        mySequence.Append(canvasGroup.transform.DOScale(finalScale, 0.3f).SetEase(Ease.OutSine)); // Duration and ease are adjustable
+        mySequence.Append(canvasGroup.transform.DOScale(midScale, midScaleDuration).SetEase(Ease.OutBack));
+        mySequence.Join(canvasGroup.DOFade(1f, 0.5f));
+        mySequence.Append(canvasGroup.transform.DOScale(finalScale, finalScaleDuration).SetEase(Ease.OutSine));
     }
 }

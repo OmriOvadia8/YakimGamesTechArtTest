@@ -4,19 +4,21 @@ using DG.Tweening;
 
 public class BackgroundScroller : MonoBehaviour
 {
-    [SerializeField] private RawImage _img;
-    [SerializeField] private Vector2 _speed;
+    [SerializeField] private RawImage backgroundImage;
+    [SerializeField] private Vector2 scrollingSpeed;
 
-    private void Start()
+    private void Start() => InitializeScreenScrolling();
+
+    private void InitializeScreenScrolling()
     {
         DOTween.To(() => 0f, t => UpdateUVRect(t), float.MaxValue, float.MaxValue)
-               .SetEase(Ease.Linear)
-               .SetLoops(-1, LoopType.Incremental);
+       .SetEase(Ease.Linear)
+       .SetLoops(-1, LoopType.Incremental);
     }
 
     private void UpdateUVRect(float t)
     {
-        Vector2 newOffset = new Vector2(t * _speed.x, t * _speed.y);
-        _img.uvRect = new Rect(newOffset, _img.uvRect.size);
+        Vector2 newOffset = new(t * scrollingSpeed.x, t * scrollingSpeed.y);
+        backgroundImage.uvRect = new Rect(newOffset, backgroundImage.uvRect.size);
     }
 }

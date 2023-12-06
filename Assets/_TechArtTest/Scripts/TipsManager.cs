@@ -5,13 +5,21 @@ using UnityEngine;
 
 public class TipsManager : MonoBehaviour
 {
-    public TMP_Text tipText; // UI element to display the tip
-    public int tipsSwitchingTimeInSeconds = 5; // Time each tip is displayed
-    public Tip[] tips; // Array of tips with serial numbers
-    private float transitionDuration = 0.5f; // Duration of the transition effect
-    private int lastTipSerialNumber = -1; // Serial number of the last displayed tip
+    [Header("UI Elements")]
+    [SerializeField] TMP_Text tipText;
 
-    void Start()
+    [Header("Tip Settings")]
+    [SerializeField] Tip[] tips;
+    [SerializeField] int tips_switching_time_in_seconds = 5;
+
+    [Header("Animation Settings")]
+    [SerializeField] float transitionDuration = 0.5f;
+
+    private int lastTipSerialNumber = -1;
+
+    void Start() => InitializeTips();
+
+    private void InitializeTips()
     {
         if (tips.Length > 1)
         {
@@ -19,7 +27,7 @@ public class TipsManager : MonoBehaviour
         }
         else if (tips.Length == 1)
         {
-            tipText.text = tips[0].Text;
+            tipText.text = tips[0].tip_text;
         }
     }
 
@@ -30,10 +38,10 @@ public class TipsManager : MonoBehaviour
             yield return tipText.DOFade(0, transitionDuration).SetEase(Ease.InOutQuad).WaitForCompletion();
             int nextTipSerialNumber = GetNextTipSerialNumber();
             Tip nextTip = GetTipBySerialNumber(nextTipSerialNumber);
-            tipText.text = nextTip.Text;
+            tipText.text = nextTip.tip_text;
             lastTipSerialNumber = nextTipSerialNumber;
             yield return tipText.DOFade(1, transitionDuration).SetEase(Ease.InOutQuad).WaitForCompletion();
-            yield return new WaitForSeconds(tipsSwitchingTimeInSeconds);
+            yield return new WaitForSeconds(tips_switching_time_in_seconds);
         }
     }
 
@@ -43,26 +51,25 @@ public class TipsManager : MonoBehaviour
         do
         {
             nextIndex = Random.Range(0, tips.Length);
-        } while (tips.Length > 1 && tips[nextIndex].SerialNumber == lastTipSerialNumber);
+        } while (tips.Length > 1 && tips[nextIndex].vs_screen_tip_number == lastTipSerialNumber);
 
-        return tips[nextIndex].SerialNumber;
+        return tips[nextIndex].vs_screen_tip_number;
     }
 
     private Tip GetTipBySerialNumber(int serialNumber)
     {
         foreach (Tip tip in tips)
         {
-            if (tip.SerialNumber == serialNumber)
+            if (tip.vs_screen_tip_number == serialNumber)
                 return tip;
         }
         return null;
     }
 }
 
-
 [System.Serializable]
-public class Tip
+public class Tip // values will be assigned via server (for this mockup it can be assigned in the inspector)
 {
-    public int SerialNumber;
-    public string Text;
+    public int vs_screen_tip_number;
+    public string tip_text;
 }

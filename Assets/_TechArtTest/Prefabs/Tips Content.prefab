@@ -281,6 +281,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7894488846287547999}
   - component: {fileID: 3578411606327709112}
+  - component: {fileID: 5694707917564287733}
   m_Layer: 5
   m_Name: Tips Content
   m_TagString: Untagged
@@ -321,3 +322,28 @@ CanvasGroup:
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
+--- !u!114 &5694707917564287733
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2817024001641623100}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9e7a0cd64cd21cf4291fdce001c23efa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tipText: {fileID: 2897557548821839473}
+  tipsSwitchingTimeInSeconds: 2
+  tips:
+  - SerialNumber: 100
+    Text: Watch your opponents, their behavior can reveal their hand.
+  - SerialNumber: 111
+    Text: Play tight but aggressive. Make your bets count.
+  - SerialNumber: 222
+    Text: Be patient. Good hands will come.
+  - SerialNumber: 333
+    Text: Don't chase losses. Fold when you're unsure.
+  - SerialNumber: 444
+    Text: Position is key. Act last to have the most information.

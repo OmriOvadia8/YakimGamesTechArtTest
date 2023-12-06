@@ -1,44 +1,47 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
 
 public class CharacterAnim : MonoBehaviour
 {
-    [SerializeField] GameObject vsScreen;
-    public RectTransform imageRectTransform; // Assign your UI Image's RectTransform
-    public float rightOffset = 10f;          // Amount to move to the right
-    public float leftOffset = 140f;          // Amount to move to the left
-    public float finalOffset = 120f;         // Final offset from the original position
-    public float duration = 0.5f;            // Duration for each movement
+    [Header("UI Components")]
+    [SerializeField] private GameObject vsScreen;
+    [SerializeField] private RectTransform imageRectTransform;
 
-    private Vector2 originalPosition;        // To store the original position
+    [Header("Animation Settings")]
+    [SerializeField] private float rightOffset = 10f;
+    [SerializeField] private float leftOffset = 140f;
+    [SerializeField] private float finalOffset = 120f;
+    [SerializeField] private float duration = 0.5f;
 
-    void Start()
+    private Vector2 originalPosition;
+
+    private void Start()
     {
+        // Initialize RectTransform if not assigned
         if (imageRectTransform == null)
         {
             imageRectTransform = GetComponent<RectTransform>();
         }
 
+        // Store the original position for reference
         originalPosition = imageRectTransform.anchoredPosition;
-
-
     }
 
     public void TransitionToVSScreen()
     {
-        // Create a sequence
+        // Create and configure the animation sequence
         Sequence sequence = DOTween.Sequence();
 
         // Move slightly to the right
         sequence.Append(imageRectTransform.DOAnchorPos(new Vector2(originalPosition.x + rightOffset, originalPosition.y), duration).SetEase(Ease.OutQuad));
 
-        // Insert a callback in the middle of the sequence
+        // Then move to the left
         sequence.Append(imageRectTransform.DOAnchorPos(new Vector2(originalPosition.x - leftOffset, originalPosition.y), duration).SetEase(Ease.InOutQuad));
-        sequence.Insert(duration, DOTween.Sequence().OnComplete(() => vsScreen.SetActive(true)));  // Activate vsScreen here
 
-        // Continue with the rest of the CharacterAnim sequence
+        // Activate vsScreen at the midpoint of the sequence
+        sequence.Insert(duration, DOTween.Sequence().OnComplete(() => vsScreen.SetActive(true)));
+
+        // Continue with the final movement
         sequence.Append(imageRectTransform.DOAnchorPos(new Vector2(originalPosition.x - finalOffset, originalPosition.y), duration).SetEase(Ease.OutQuad));
     }
 }
