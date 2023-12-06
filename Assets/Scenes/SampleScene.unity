@@ -7732,7 +7732,7 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: c340024b972bc5d4b87c72f71520a1f2, type: 2}
     - target: {fileID: 6886758963319998923, guid: 7865c16af6763934698baadd6376318a, type: 3}
       propertyPath: m_Name
-      value: Avatar Holder (1)
+      value: Enemy Avatar
       objectReference: {fileID: 0}
     - target: {fileID: 6886758963319998923, guid: 7865c16af6763934698baadd6376318a, type: 3}
       propertyPath: m_IsActive
@@ -8906,7 +8906,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6886758963319998923, guid: 7865c16af6763934698baadd6376318a, type: 3}
       propertyPath: m_Name
-      value: Avatar Holder
+      value: Player Avatar
       objectReference: {fileID: 0}
     - target: {fileID: 6886758963319998923, guid: 7865c16af6763934698baadd6376318a, type: 3}
       propertyPath: m_IsActive

@@ -2,7 +2,7 @@ using DG.Tweening;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class EnemyAvatarAnim : MonoBehaviour
+public class EnemyAvatarAnimation : MonoBehaviour
 {
     [Header("UI Components")]
     [SerializeField] Image image;

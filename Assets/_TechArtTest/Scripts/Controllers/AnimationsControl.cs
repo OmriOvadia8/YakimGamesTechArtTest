@@ -11,7 +11,7 @@ public class AnimationsControl : MonoBehaviour
 
     [Header("Animation Managers")]
     [SerializeField] private FadeTransitionManager detailsFading;
-    [SerializeField] private CharacterAnim characterAnim;
+    [SerializeField] private PlayerAvatarAnimation characterAnim;
 
     [Header("Match Settings")]
     [SerializeField] private float waitingDuration;

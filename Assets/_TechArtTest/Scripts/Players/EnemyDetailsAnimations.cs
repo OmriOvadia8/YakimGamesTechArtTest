@@ -1,7 +1,7 @@
 using DG.Tweening;
 using UnityEngine;
 
-public class EnemyDetailsAnim : MonoBehaviour
+public class EnemyDetailsAnimations : MonoBehaviour
 {
     [Header("Enemy UI Elements")]
     [SerializeField] private GameObject enemyName;
